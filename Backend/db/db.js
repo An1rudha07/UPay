@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const { Schema } = mongoose;
 
@@ -12,7 +13,7 @@ const userSchema = new Schema({
         maxLenght : 20,
         unique : true 
     },
-    fistName : {
+    firstName : {
         type : String,
         required : true,
         maxLenght : 30,
@@ -32,9 +33,36 @@ const userSchema = new Schema({
     }
 });
 
+const accountSchema = new mongoose.Schema({
+    // TAKING THE REFERNCE OF THE USER SCHEMA FOR THE USER ID 
+    // BASIC FEATURE TO JOIN THE TWO COLLECTION IN THE MONGODB 
+    userId: {
+        type: mongoose.Schema.Types.ObjectId, // Reference to User model
+        ref: 'User',
+        required: true
+    },
+    balance: {
+        type: Number,
+        required: true
+    }
+});
+
+userSchema.method.createHash = async function (plainTextPassword) {
+    const saltRound =10;
+    const salt = await bcrypt.genSalt(saltRound);
+    return bcrypt.hash(plainTextPassword, salt);    
+};
+
+userSchema.method.validatePassword = async function (canditatePassword) {
+    return await bcrypt.compare(canditatePassword, this.password);
+};
+
+//model of userSchema 
 const User = mongoose.model("User", userSchema);
+const Account  = mongoose.model("Account", accountSchema );
 
 module.exports ={
-    User,
+    User, 
+    Account
 };
 
