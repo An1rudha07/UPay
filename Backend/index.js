@@ -1,15 +1,14 @@
-const express = require("express");
+const express = require('express');
+const app = express();
 const cors = require("cors");
-//ORDER OF CORS MATTERS ALOT IN THE DEFINATION
+
 app.use(cors());
 app.use(express.json());
 
-const mainRouter = require("./router/index");
-const app = express;
+const mainRouter = require("./router/index");  // Import the main router
 
-app.use("/api/v1", mainRouter);
+app.use("/api/v1", mainRouter);  // Use main router
 
-app.listen("3000");
-
-
-
+app.listen(3000, () => {
+    console.log("Server running on port 3000");
+});

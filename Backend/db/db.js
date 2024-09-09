@@ -1,35 +1,36 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const { number } = require("zod");
 
 const { Schema } = mongoose;
 
 mongoose.connect("mongodb+srv://anirudhupadhyay05:KjdoeVvmIp4MAjSk@cluster0.lm8rg.mongodb.net/UPayDB");
 
 const userSchema = new Schema({
-    username : {
-        type : String,
-        required :true,
-        minLenght : 3,
-        maxLenght : 20,
-        unique : true 
+    username: {
+        type: String,
+        required: true,
+        minlength: 3,
+        maxlength: 30,
+        unique: true
     },
-    firstName : {
-        type : String,
-        required : true,
-        maxLenght : 30,
-        trim : true 
+    firstName: {
+        type: String,
+        required: true,
+        maxlength: 30,
+        trim: true
     },
-    lastName :{
-        type : String,
-        required : true,
-        maxLenght : 30,
-        trim : true 
+    lastName: {
+        type: String,
+        required: true,
+        maxlength: 30,
+        trim: true
     },
-    password :{
-        type : String,
-        required : true,
-        minLenght : 8,
-        trim : true 
+    password: {
+        type: String,
+        required: true,
+        minlength: 8,
+        trim: true
     }
 });
 
