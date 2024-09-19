@@ -56,7 +56,7 @@ userRouter.post("/signup", asyncHandler(async(req, res) => {
         balance: 1 + Math.random() * 10000
     });
 
-    const token = jwt.sign({ userId }, JWT_SECRET);
+    const token = jwt.sign({ userId }, JWT_SECRET, {expiresIn : '60d'});
 
     res.json({
         message: "User created successfully",
