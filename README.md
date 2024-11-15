@@ -38,5 +38,6 @@ UPay is a modern digital payment application inspired by Paytm. The goal of this
   - JSON Web Tokens (JWT)
 
 ## Installation
-
+ - Make sure clone the repoistory 
+ - Install all the dependency of the project
 
