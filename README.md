@@ -29,7 +29,7 @@ UPay is a modern digital payment application inspired by Paytm. The goal of this
 
 - **Backend:**
   - Node.js
-  - Express.js
+  - Express.js		
 
 - **Database:**
   - MongoDB
@@ -38,5 +38,8 @@ UPay is a modern digital payment application inspired by Paytm. The goal of this
   - JSON Web Tokens (JWT)
 
 ## Installation
-
+ - Make sure clone the repoistory 
+ - Install all the dependency of the project
+ - Go through the package.json file to check the remaining dependency.
+	
 
