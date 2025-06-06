@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+require('dotenv').config();
 
 const { number } = require("zod");
-
 const { Schema } = mongoose;
 
-mongoose.connect("mongodb+srv://anirudhupadhyay05:KjdoeVvmIp4MAjSk@cluster0.lm8rg.mongodb.net/UPayDB");
+mongoose.connect(process.env.MONGODB_URI);
 
 const userSchema = new Schema({
     username: {
